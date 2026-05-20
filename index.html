@@ -528,16 +528,17 @@ function render() {
     }
   });
 
-  let tableRows = morningRows + bothRows + eveningRows;
-
+    // 🔴🔴🔴 নতুন কোড শুরু 🔴🔴🔴
   let leaveRows = '';
-  const leaveEntries = Object.entries(data.leave);
-  if (leaveEntries.length === 0) {
+  if (!data.leave || data.leave.length === 0) {
     leaveRows = `<tr class="leave-row"><td colspan="2" style="text-align:center;color:#666;font-style:italic;">No leave data</td></tr>`;
   } else {
-leaveEntries.forEach(([name, info]) => {
-      leaveRows += `<tr class="leave-row"><td>${name}</td><td>${info}</td></tr>`;
+    data.leave.forEach(line => {
+      leaveRows += `<tr class="leave-row"><td colspan="2" style="text-align:left; padding-left:15px;">${line}</td></tr>`;
     });
+  }
+  // 🔴🔴🔴 নতুন কোড শেষ 🔴🔴🔴
+
 }
 
   
