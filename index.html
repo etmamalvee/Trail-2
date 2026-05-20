@@ -534,10 +534,10 @@ function render() {
   const leaveEntries = Object.entries(data.leave);
   if (leaveEntries.length === 0) {
     leaveRows = `<tr class="leave-row"><td colspan="2" style="text-align:center;color:#666;font-style:italic;">No leave data</td></tr>`;
-  } else {  data.leave.forEach(line => {
-    // আপনি যেভাবে পুরো লাইন লিখবেন, সেটাকেই হুবহু এক লাইনে দেখাবে
-    leaveRows += `<tr class="leave-row"><td colspan="2" style="text-align:left; padding-left:15px;">${line}</td></tr>`;
-  });
+  } else {
+leaveEntries.forEach(([name, info]) => {
+      leaveRows += `<tr class="leave-row"><td>${name}</td><td>${info}</td></tr>`;
+    });
 }
 
   
