@@ -112,6 +112,16 @@ l<!DOCTYPE html>
     background: #1f618d !important;
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4) !important;
   }
+    /* রিসেট বাটনের নতুন স্টাইল */
+  .btn-reset {
+    background: #962d2d !important;
+    border-color: #ff4d4d !important;
+  }
+  .btn-reset:hover {
+    background: #6b1a1a !important;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4) !important;
+  }
+
 
   /* ===== MAIN ROSTER CARD ===== */
   .roster-card {
@@ -411,6 +421,8 @@ l<!DOCTYPE html>
 
   <button onclick="openEditModal()">✏️ Edit</button>
   <button class="btn-download" onclick="downloadRosterImage()">📥 Download Image</button>
+    <button class="btn-reset" onclick="resetRosterData()">🔄 Reset Data</button>
+
 </div>
 
 <div class="roster-card" id="rosterCard">
@@ -606,6 +618,17 @@ function downloadRosterImage() {
     rosterCard.classList.add('run-animation');
   });
 }
+  // রিসেট করার নতুন ফাংশন
+function resetRosterData() {
+  const confirmReset = confirm("Are you sure you want to reset all modified data to original defaults?");
+  if (confirmReset) {
+    localStorage.removeItem('rosterData');
+    rosterData = JSON.parse(JSON.stringify(defaultData));
+    render();
+    alert("Data has been successfully reset!");
+  }
+}
+
 
 function openEditModal() {
   const day = document.getElementById('daySelect').value;
